@@ -1,5 +1,7 @@
 module Peat
-  class Client
+  module Client
+    module_function
+
     def connection
       @connection ||= Faraday.new(url: "https://www.exacttargetapis.com/messaging/v1/") do |conn|
         conn.request :json
@@ -14,7 +16,7 @@ module Peat
       resp = connection.post do |req|
         req.url "messageDefinitionSends/key:#{trigger_name}/send"
         req.headers['Content-Type'] = 'application/json'
-        req.headers['Authorization'] = "Bearer #{Fuel::TokenManager.token}"
+        req.headers['Authorization'] = "Bearer #{Peat::TokenManager.token}"
         req.body = params.to_json
       end
 
