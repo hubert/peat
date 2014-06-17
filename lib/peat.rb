@@ -1,5 +1,6 @@
 require "peat/version"
 
 module Peat
-  # Your code goes here...
+  autoload :TokenManager, 'peat/token_manager'
+  autoload :Client, 'peat/client'
 end
