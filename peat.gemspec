@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Peat::VERSION
   spec.authors       = ["Hubert Huang"]
   spec.email         = ["hhuang@practicefusion.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Wrapper for the Exact Target fuel api}
+  spec.description   = %q{Wrapper for the Exact Target fuel api}
   spec.homepage      = ""
   spec.license       = "MIT"
 
