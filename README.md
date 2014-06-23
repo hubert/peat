@@ -48,6 +48,7 @@ mail_params = {
   }
 }
 peat_client = Peat::Client.deliver('name_of_my_triggered_send', mail_params')
+```
 
 ## Contributing
 
