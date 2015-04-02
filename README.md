@@ -19,9 +19,18 @@ Or install it yourself as:
 
 ## Usage
 
-The Peat::TokenManager class depends on two global variables being set -- $fuel_client_id and $fuel_secret.
+The Peat::TokenManager class depends on the gem-including app to set up a client id and secret for the Fuel API.
+The gem will look for the these values in one of two places, ENV['FUEL_CLIENT_ID'] or $fuel_client_id and ENV['FUEL_SECRET'] or $fuel_secret,
+for the fuel client id and secret respectively. Note if both the enviornment and global are set, the environment variable takes precedence.
 
-If you're using a rails app, this could be added to config/initializers/peat.rb
+If you're using a rails app, this could be configured in an intializer, e.g. config/initializers/peat.rb
+
+```
+ENV['FUEL_CLIENT_ID'] = 'yourclientid'
+ENV['FUEL_SECRET'] = 'yoursecret'
+```
+
+or
 
 ```
 $fuel_client_id = 'yourclientid'

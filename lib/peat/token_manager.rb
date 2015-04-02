@@ -8,8 +8,8 @@ module Peat
             req.url 'requestToken'
             req.headers['Content-Type'] = 'application/json'
             req.body = {
-              'clientId' => $fuel_client_id,
-              'clientSecret' => $fuel_secret,
+              'clientId' => ENV['FUEL_CLIENT_ID'] || $fuel_client_id,
+              'clientSecret' => ENV['FUEL_SECRET'] || $fuel_secret,
             }.to_json
           end.body.merge('created_at' => Time.now)
         end
