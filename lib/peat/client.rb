@@ -1,3 +1,5 @@
+require 'faraday_middleware'
+
 module Peat
   module Client
     module_function
