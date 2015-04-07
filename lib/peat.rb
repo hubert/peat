@@ -1,4 +1,5 @@
 require "peat/version"
+require 'faraday_middleware'
 
 module Peat
   autoload :TokenManager, 'peat/token_manager'
