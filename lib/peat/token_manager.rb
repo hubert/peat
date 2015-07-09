@@ -2,14 +2,16 @@ module Peat
   module TokenManager
     module_function
 
-      def token
+      def token(fuel_client_id: nil, fuel_secret: nil)
         fetch_token do
+          client_id = fuel_client_id || ENV['FUEL_CLIENT_ID'] || $fuel_client_id
+          secret = fuel_secret || ENV['FUEL_SECRET'] || $fuel_secret
           connection.post do |req|
             req.url 'requestToken'
             req.headers['Content-Type'] = 'application/json'
             req.body = {
-              'clientId' => ENV['FUEL_CLIENT_ID'] || $fuel_client_id,
-              'clientSecret' => ENV['FUEL_SECRET'] || $fuel_secret,
+              'clientId' => client_id,
+              'clientSecret' => secret,
             }.to_json
           end.body.merge('created_at' => Time.now)
         end
