@@ -20,7 +20,7 @@ module Peat
       end
 
       def connection
-        @connection = Faraday.new(url: 'https://auth.exacttargetapis.com/v1/') do |conn|
+        @connection ||= Faraday.new(url: 'https://auth.exacttargetapis.com/v1/') do |conn|
           conn.request :json
 
           conn.response :logger
