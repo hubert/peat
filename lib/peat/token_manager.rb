@@ -6,6 +6,8 @@ module Peat
         fetch_token do
           client_id = fuel_client_id || ENV['FUEL_CLIENT_ID'] || $fuel_client_id
           secret = fuel_secret || ENV['FUEL_SECRET'] || $fuel_secret
+          raise MissingConfiguration, 'You must set values for fuel client id and secret' unless client_id && secret
+
           connection.post do |req|
             req.url 'requestToken'
             req.headers['Content-Type'] = 'application/json'
