@@ -56,8 +56,37 @@ mail_params = {
     }
   }
 }
-peat_client = Peat::Client.deliver('name_of_my_triggered_send', mail_params)
+
+# simple one-off send
+Peat::Client.deliver('name_of_my_triggered_send', mail_params)
 ```
+
+You can also initiate a client to use throughout:
+
+```
+peat_client = Peat::Client.new
+peat_client.deliver('name_of_triggered_send', maii_params)
+```
+
+## Advanced Usage
+
+Peat is built on top of Faraday and gives you the ability to 
+customize the adapter, as well as insert faraday middleware 
+to be used when making the request to Exact Target.
+
+```
+class MyAwesomeMiddleware < Faraday::Middleware
+  def call(env)
+    ...
+  end
+end
+
+peat_client = Peat::Client.new(middleware: [MyAwesomeMiddleware], adapter: :net_http_persistent)
+peat_client.deliver('name_of_triggered_send', maii_params)
+```
+
+Middleware are inserted in the order they are specified. By default,
+the json middlware and the Net::HTTP adapter are used.
 
 ## Contributing
 
