@@ -1,6 +1,10 @@
 module Peat
   class Client
 
+    def self.deliver(triggered_send, params)
+      new.deliver(triggered_send, params)
+    end
+
     def initialize(middleware: [], adapter: Faraday.default_adapter)
       @middleware = middleware
       @adapter = adapter
